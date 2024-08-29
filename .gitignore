@@ -1,7 +1,7 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
-
+*.suo
 /WebAPIDemo
 /NZWalks/NZWalks.API/bin/Debug/net7.0/runtimes
 /NZWalks/NZWalks.API/bin/Debug/net7.0
@@ -9,3 +9,10 @@
 /NZWalks/.vs/NZWalks/FileContentIndex
 /.vs
 /NZWalks/NZWalks.API/obj/Debug/net7.0
+/NZWalks/.vs/NZWalks
+/NZWalks/.vs/NZWalks/v17
+*.obj
+*.pdb
+*.ipk
+*.suo
+*.user
