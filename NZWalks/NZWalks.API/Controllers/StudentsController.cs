@@ -7,5 +7,12 @@ namespace NZWalks.API.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
+
+        [HttpGet]
+        public IActionResult GetStudent()
+        {
+            string[] studentNames = new string[] { "Monu", "sonu", "siraf", "sabat" };
+            return Ok(studentNames);
+        }
     }
 }
