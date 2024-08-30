@@ -17,7 +17,7 @@ namespace NZWalks.API.Controllers
         }
 
         //GET ALL REGIONS
-        // https://localhost:portnumber/api/regions
+        //https://localhost:portnumber/api/regions
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -40,6 +40,8 @@ namespace NZWalks.API.Controllers
             return Ok(regionsDto);
         }
 
+
+        //GETS A SPECIFIC REGIONS BY PRVODONG ID
         [HttpGet]
         [Route("{id:Guid}")]
         public IActionResult GetById([FromRoute] Guid id)
@@ -66,5 +68,37 @@ namespace NZWalks.API.Controllers
             //Return DTO Back to client
             return Ok(regionDto);
         }
+
+        //POST IMPLEMENTATION
+
+        [HttpPost]
+        public IActionResult Create([FromBody] AddRegionRequestDto addRegionRequestDto)
+        {
+
+            //Map/Convert DTO to Domain Model
+            var regionDomainModel = new Region
+            { 
+                Code = addRegionRequestDto.Code,   
+                Name = addRegionRequestDto.Name,
+                RegoinImageUrl = addRegionRequestDto.RegoinImageUrl
+            };
+
+            // Use domain model to create region
+            dbContext.Regions.Add(regionDomainModel);
+            dbContext.SaveChanges();
+
+            //Map domain Model back to DTO
+            var regionDto = new RegionDto
+            {
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegoinImageUrl = regionDomainModel.RegoinImageUrl
+            };
+
+
+            return CreatedAtAction(nameof(GetById), new {id = regionDto.Id}, regionDto);
+        }
+
     }
 }
