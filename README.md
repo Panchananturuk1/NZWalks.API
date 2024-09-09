@@ -6,3 +6,5 @@
 => Use Entity Framework Core in a code first approach
 
 => Apply Entity Framework Core to perform CRUD operations on a SQL Server database
+
+=> Apply the Repository Pattern in ASPNET Core Web API
